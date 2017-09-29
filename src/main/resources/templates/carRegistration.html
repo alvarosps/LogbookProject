@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Registro de Carros</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<img th:src="@{/images/carregistration.png}" class="img-responsive"/>
+				<form autocomplete="off" action="#" th:action="@{/carRegistration}"
+					th:object="${car}" method="post" class="form-horizontal"
+					role="form">
+					<h2>Formulario de registro de carro</h2>
+					<div class="form-group">
+						<div class="col-sm-9">
+						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								class="validation-message"></label>
+						<input type="text" th:field="*{name}" placeholder="Name"
+								class="form-control" /> 
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+						<label	th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{brand}"
+								placeholder="Marca" class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="text" th:field="*{year}" placeholder="Ano"
+								class="form-control" /> <label
+								th:if="${#fields.hasErrors('year')}" th:errors="*{year}"
+								class="validation-message"></label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="text" th:field="*{image}"
+								placeholder="Link para imagem" class="form-control" /> <label
+								th:if="${#fields.hasErrors('image')}" th:errors="*{image}"
+								class="validation-message"></label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							<button type="submit" class="btn btn-primary btn-block">Registrar Carro</button>
+						</div>
+					</div>
+					
+					<span th:utext="${successMessage}"></span>
+					
+					
+				</form>
+				<a th:href="@{/admin/home}" class="btn btn-info" role="button">Voltar</a>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

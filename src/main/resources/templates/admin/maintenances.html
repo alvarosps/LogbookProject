@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Manutenções</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		
+		<form th:action="@{/logout}" method="get">
+			<button class="btn btn-md btn-danger btn-block" name="registration"
+				type="Submit">Logout</button>
+		</form>    
+		<div class="panel-group" style="margin-top:40px">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<span th:utext="${userName}"></span>
+				</div>
+				
+				<a th:href="@{/maintenanceRegistration}" class="btn btn-info center-block" role="button">Registrar manutenção</a>
+				<img th:src="@{/images/maintenances.png}" class="img-responsive center-block"/>
+				<div class="panel-body">
+					<div style="text-align: center;">
+						<h1>Manutenções registradas:</h1>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th th:text="id">Carro</th>	
+									<th th:text="id">ID</th>
+									<th th:text="nome">Nome</th>
+									<th th:text="marca">KM</th>
+									<th th:text="ano">Descrição</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="maintenance: ${maintenances}">
+									<td th:text="${maintenance.carName}"></td>
+									<td th:text="${maintenance.maintenanceId}"></td>
+									<td th:text="${maintenance.name}"></td>
+									<td th:text="${maintenance.km}"></td>
+									<td th:text="${maintenance.description}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<a th:href="@{/admin/home}" class="btn btn-info" role="button">Voltar a pagina inicial</a>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
